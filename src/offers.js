@@ -7,7 +7,7 @@ const vendors = {
   'Ponto Frio': 'pontoFrio'
 }
 
-const read = filename => {
+const read = (filename = './offers.xlsx', limit) => {
   const workbook = new Excel.Workbook()
   return workbook.xlsx.readFile(filename)
     .then(() => {
@@ -26,7 +26,7 @@ const read = filename => {
         })
         workbookOffers = [...workbookOffers, ...sheetOffers]
       })
-      return workbookOffers.slice(1, 5)
+      return limit ? workbookOffers.slice(0, limit) : workbookOffers
     })
 }
 
