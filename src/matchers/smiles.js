@@ -3,9 +3,9 @@ const cheerio = require('cheerio')
 
 const vendors = {
   extra: 'extra',
-  casasBahia: '',
-  pontoFrio: '',
-  fastShop: ''
+  casasBahia: 'casasbahia',
+  pontoFrio: 'pontofrio',
+  fastShop: 'fastshop'
 }
 
 const search = (offer) => {
@@ -14,31 +14,34 @@ const search = (offer) => {
     url: 'https://www.shoppingsmiles.com.br/smiles/super_busca.jsf',
     params: {
       a: false,
-      b: 'Rel%C3%B3gio+Masculino+Digital+Casio+W215H1AVDF+-+Preto' || offer.description,
-      f: 'extra' || vendors[offer.vendor]
+      b: offer.description,
+      f: vendors[offer.vendor]
     }
   }
 
   return axios(options)
-    .then(response => { console.log(response); return response; })
-    .then(response => cheerio.load(response, {  }))
-    .then(a => { console.log(a); return a })
+    .then(response => { return response.data; })
+    .then(cheerio.load)
 }
 
 const parse = $ => {
-  return $('span.itens-section').html()
+  return $('span.itens-section a')
+    .map(function () {
+      return {
+        name: $(this).find('span.item-name').text(),
+        pointsPrice: parseFloat($(this).find('span.item-main-pricing').text()),
+        pointsPriceFrom: parseFloat($(this).find('span.block-from-price-value').text())
+      }
+    }).toArray()
 }
 
-const smilesMatcher = offer => (Promise.resolve({
-  program: 'smiles',
-  vendor: offer.vendor,
-  pointsPrice: 200
-}))
-
-module.exports = offer => {
-  // search(offer)
-  // .then(parse)
-  // .then(console.log)
-
-  return smilesMatcher(offer)
+const evaluate = results => {
+  return Promise.resolve(results[0] || null)
 }
+
+const smilesMatcher = offer => search(offer)
+  .then(parse)
+  .then(evaluate)
+  .then(product => ({ vendor: offer.vendor, program: 'smiles', ...product }))
+
+module.exports = smilesMatcher
