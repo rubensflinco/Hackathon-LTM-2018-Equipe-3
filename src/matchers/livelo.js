@@ -10,6 +10,14 @@ const liveloMatcher = offer => {
     fastShop: "2772514182"
   };
 
+  if (!Nvendor[offer.vendor]) {
+    var responseJSON = ({
+      program: 'livelo',
+      vendor: offer.vendor
+    });
+    return (responseJSON);
+  }
+
   return axios.get('http://www.pontoslivelo.com.br/browse', {
     params: {
       N: Nvendor[offer.vendor],
@@ -20,25 +28,25 @@ const liveloMatcher = offer => {
       const $ = cheerio.load(response.data);
 
       const items = $('div.clpfeatureddesc').map(function (i) {
-        
+
         const pointsPrice = $(this).find('span.prodprice').text();
         const pointsPriceFrom = $(this).find('span.strikeprodprice').find('strike').text();
         const name = $(this).find('h5.proddesc').text();
-        return { vendor, pointsPrice, pointsPriceFrom, name }
+        return { pointsPrice, pointsPriceFrom, name }
       });
 
-      if (items.length == 0){
+      if (items.length == 0) {
         var responseJSON = ({
           program: 'livelo',
           vendor: offer.vendor
         });
-      }else{
+      } else {
         var responseJSON = ({
           program: 'livelo',
           vendor: offer.vendor,
           name: items[0].name,
-          pointsPriceFrom: items[0].pointsPriceFrom,
-          pointsPrice: items[0].pointsPrice
+          pointsPriceFrom: parseFloat(items[0].pointsPriceFrom.replace(".", "")),
+          pointsPrice: parseFloat(items[0].pointsPrice.replace(".", ""))
         });
       }
       return (responseJSON);

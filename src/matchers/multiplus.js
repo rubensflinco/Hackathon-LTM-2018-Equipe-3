@@ -1,13 +1,26 @@
 const axios = require('axios')
 
 const multiplusMatcher = (offer) => {
+    const vendors = {
+        pontoFrio: "pontofrio",
+        casasBahia: "casasbahia"
+    }
+
+    if (!vendors[offer.vendor]) {
+        var responseJSON = ({
+            program: 'multiplus',
+            vendor: offer.vendor
+        });
+        return (responseJSON);
+    }
+
     const options = {
         method: 'get',
-        url: 'https://www.pontosmultiplus.com.br/troque/casasbahia/typeahead',
+        url: `https://www.pontosmultiplus.com.br/troque/${vendors[offer.vendor]}/typeahead`,
         params: {
             Dy: 1,
             Nty: 1,
-            Ntt: 'CHAPINHA | PRANCHA MONDIAL GOLDEN ROSE P20 220°C CERÂMICA E TOURMALINE - ROSA'
+            Ntt: offer.description
         }
     }
 
@@ -35,8 +48,8 @@ const multiplusMatcher = (offer) => {
                 obj.program = 'multiplus'
                 obj.vendor = vendor
                 obj.name = element.name
-                obj.pointPrice = element.price.full.to
-                obj.pointPriceFrom = element.price.full.from[0]
+                obj.pointPrice = parseFloat(element.price.full.to.replace(".",""))
+                obj.pointPriceFrom = parseFloat(element.price.full.from[0].replace(".",""))
             })
 
             return obj
