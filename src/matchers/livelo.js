@@ -16,27 +16,43 @@ const liveloMatcher = offer => {
       Ntt: offer.description
     }
   })
-  .then(function (response) {
-    const $ = cheerio.load(response.data);
+    .then(function (response) {
+      const $ = cheerio.load(response.data);
 
-    const vendor = $('span.partner-name').text();
-    const pointsPrice = $('span.prodprice').text();
+      const items = $('div.clpfeatureddesc').map(function (i) {
 
-    const responseJSON = ({
-      program: 'livelo',
-      vendor: vendor,
-      pointsPrice: parseInt(pointsPrice.replace(".", ""))
+        const vendor = $(this).find('span.partner-name').text();
+        const pointsPrice = $(this).find('span.prodprice').text();
+        const pointsPriceFrom = $(this).find('span.strikeprodprice').find('strike').text();
+        const name = $(this).find('h5.proddesc').text();
+        return { vendor, pointsPrice, pointsPriceFrom, name }
+      });
+
+      if (items.length == 0){
+        var responseJSON = ({
+          program: 'livelo',
+          ERRO: 'Não achei nenhum resultado :('
+        });
+      }else{
+        var responseJSON = ({
+          program: 'livelo',
+          vendor: items[0].vendor,
+          name: items[0].name,
+          pointsPriceFrom: items[0].pointsPriceFrom,
+          pointsPrice: items[0].pointsPrice
+        });
+      }
+      return (responseJSON);
+
+
+    }).catch(function (error) {
+
+      const responseJSON = ({
+        program: 'livelo',
+        ERRO: error
+      });
+      return (responseJSON);
     });
-    return (responseJSON);
-
-
-  }).catch(function (error) {
-
-    const responseJSON = ({
-      ERRO: error
-    });
-    return (responseJSON);
-  });
 
 
 }

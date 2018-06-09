@@ -2,7 +2,7 @@ const program = require('commander')
 const productMatcher = require('./productMatcher')
 
 const offer = {
-  description: 'Relógio Masculino Digital Casio W215H1AVDF - Preto',
+  description: 'Relógio u',
   sku: '12358760',
   category: 'Beleza & Saúde',
   brand: 'Mondial',
