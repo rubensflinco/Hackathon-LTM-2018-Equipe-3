@@ -10,11 +10,11 @@ const offer = {
   priceTo: 'R$39,90',
   pointsPrice: 2100,
   discount: 0.6,
-  vendor: 'Ponto Frio'
+  vendor: 'pontoFrio'
 }
 
 const offers = [ offer ]
 
 const matches = offers.map(productMatcher)
 
-console.log(matches)
+Promise.all(matches).then(console.log)
