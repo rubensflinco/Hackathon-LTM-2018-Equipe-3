@@ -2,10 +2,10 @@ const axios = require('axios')
 
 const multiplusMatcher = (offer) => {
     const vendors = {
-        extra: "Extra",
-        pontoFrio: "Ponto Frio",
-        casasBahia: "Casas Bahia",
-        fastShop: "Fast Shop"
+        extra: "extra",
+        pontoFrio: "pontofrio",
+        casasBahia: "casasbahia",
+        fastShop: "fastshop"
     }
     const options = {
         method: 'get',
