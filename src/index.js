@@ -2,7 +2,7 @@ const program = require('commander')
 const productMatcher = require('./productMatcher')
 
 const offer = {
-  description: 'Chapinha | Prancha Mondial Chrome Pink P19 220°C Cerâmica e Tourmaline - Rosa',
+  description: 'Relógio u',
   sku: '12358760',
   category: 'Beleza & Saúde',
   brand: 'Mondial',
@@ -10,7 +10,7 @@ const offer = {
   priceTo: 'R$39,90',
   pointsPrice: 2100,
   discount: 0.6,
-  vendor: 'pontoFrio'
+  vendor: 'extra'
 }
 
 const offers = [ offer ]
