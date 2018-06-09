@@ -12,7 +12,7 @@ const liveloMatcher = offer => {
 
   if (!Nvendor[offer.vendor]) {
     var responseJSON = ({
-      program: 'multiplus',
+      program: 'livelo',
       vendor: offer.vendor
     });
     return (responseJSON);

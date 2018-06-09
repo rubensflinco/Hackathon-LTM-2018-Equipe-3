@@ -10,7 +10,7 @@ const offer = {
   priceTo: 'R$39,90',
   pointsPrice: 2100,
   discount: 0.6,
-  vendor: 'xxx'
+  vendor: 'pontoFrio'
 }
 
 const offers = [ offer ]

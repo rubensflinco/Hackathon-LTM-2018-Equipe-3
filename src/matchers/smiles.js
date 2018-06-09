@@ -29,8 +29,8 @@ const parse = $ => {
     .map(function () {
       return {
         name: $(this).find('span.item-name').text(),
-        pointsPrice: parseFloat($(this).find('span.item-main-pricing').text()),
-        pointsPriceFrom: parseFloat($(this).find('span.block-from-price-value').text())
+        pointsPrice: parseFloat($(this).find('span.item-main-pricing').text().replace(".","")),
+        pointsPriceFrom: parseFloat($(this).find('span.block-from-price-value').text().replace(".",""))
       }
     }).toArray()
 }
