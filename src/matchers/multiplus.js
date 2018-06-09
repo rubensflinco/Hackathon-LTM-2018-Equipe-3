@@ -7,6 +7,15 @@ const multiplusMatcher = (offer) => {
         casasBahia: "casasbahia",
         fastShop: "fastshop"
     }
+    
+    if ((offer.vendor == "extra") || (offer.vendor == "fastshop")){
+        var responseJSON = ({
+            program: 'multiplus',
+            vendor: offer.vendor
+          });
+        return(responseJSON);
+    }
+
     const options = {
         method: 'get',
         url: `https://www.pontosmultiplus.com.br/troque/${vendors[offer.vendor]}/typeahead`,
