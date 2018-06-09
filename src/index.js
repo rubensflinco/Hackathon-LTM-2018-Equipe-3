@@ -2,7 +2,7 @@ const program = require('commander')
 const productMatcher = require('./productMatcher')
 
 const offer = {
-  description: 'Chapinha | Prancha Mondial Chrome Pink P19 220°C Cerâmica e Tourmaline - Rosa',
+  description: 'Relógio Masculino Digital Casio W215H1AVDF - Preto',
   sku: '12358760',
   category: 'Beleza & Saúde',
   brand: 'Mondial',
@@ -10,11 +10,11 @@ const offer = {
   priceTo: 'R$39,90',
   pointsPrice: 2100,
   discount: 0.6,
-  vendor: 'Ponto Frio'
+  vendor: 'extra'
 }
 
 const offers = [ offer ]
 
 const matches = offers.map(productMatcher)
 
-console.log(matches)
+Promise.all(matches).then(console.log)
