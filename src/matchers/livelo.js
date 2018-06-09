@@ -30,7 +30,7 @@ const liveloMatcher = offer => {
       if (items.length == 0){
         var responseJSON = ({
           program: 'livelo',
-          ERRO: 'Não achei nenhum resultado :('
+          vendor: offer.vendor
         });
       }else{
         var responseJSON = ({
@@ -48,7 +48,7 @@ const liveloMatcher = offer => {
 
       const responseJSON = ({
         program: 'livelo',
-        ERRO: error
+        vendor: offer.vendor
       });
       return (responseJSON);
     });
