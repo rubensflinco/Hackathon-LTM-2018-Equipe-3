@@ -42,6 +42,6 @@ const evaluate = results => {
 const smilesMatcher = offer => search(offer)
   .then(parse)
   .then(evaluate)
-  .then(product => ({ vendor: offer.vendor, program: 'smiles', ...product }))
+  .then(product => ({ program: 'smiles', vendor: offer.vendor, ...product }))
 
 module.exports = smilesMatcher
