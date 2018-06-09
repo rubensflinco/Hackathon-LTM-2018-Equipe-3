@@ -2,11 +2,18 @@ const axios = require('axios')
 
 const multiplusMatcher = (offer) => {
     const vendors = {
-        extra: "extra",
         pontoFrio: "pontofrio",
-        casasBahia: "casasbahia",
-        fastShop: "fastshop"
+        casasBahia: "casasbahia"
     }
+
+    if (!vendors[offer.vendor]) {
+        var responseJSON = ({
+            program: 'multiplus',
+            vendor: offer.vendor
+        });
+        return (responseJSON);
+    }
+
     const options = {
         method: 'get',
         url: `https://www.pontosmultiplus.com.br/troque/${vendors[offer.vendor]}/typeahead`,
@@ -41,8 +48,8 @@ const multiplusMatcher = (offer) => {
                 obj.program = 'multiplus'
                 obj.vendor = vendor
                 obj.name = element.name
-                obj.pointPrice = parseFloat(element.price.full.to)
-                obj.pointPriceFrom = parseFloat(element.price.full.from[0])
+                obj.pointPrice = parseFloat(element.price.full.to.replace(".",""))
+                obj.pointPriceFrom = parseFloat(element.price.full.from[0].replace(".",""))
             })
 
             return obj
