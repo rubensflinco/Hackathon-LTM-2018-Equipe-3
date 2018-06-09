@@ -2,7 +2,7 @@ const program = require('commander')
 const productMatcher = require('./productMatcher')
 
 const offer = {
-  description: 'Relógio u',
+  description: 'Relógio',
   sku: '12358760',
   category: 'Beleza & Saúde',
   brand: 'Mondial',

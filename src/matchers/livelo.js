@@ -24,7 +24,7 @@ const liveloMatcher = offer => {
         const pointsPrice = $(this).find('span.prodprice').text();
         const pointsPriceFrom = $(this).find('span.strikeprodprice').find('strike').text();
         const name = $(this).find('h5.proddesc').text();
-        return { vendor, pointsPrice, pointsPriceFrom, name }
+        return { pointsPrice, pointsPriceFrom, name }
       });
 
       if (items.length == 0){
@@ -37,8 +37,8 @@ const liveloMatcher = offer => {
           program: 'livelo',
           vendor: offer.vendor,
           name: items[0].name,
-          pointsPriceFrom: items[0].pointsPriceFrom,
-          pointsPrice: items[0].pointsPrice
+          pointsPriceFrom: parseFloat(items[0].pointsPriceFrom.replace(".", "")),
+          pointsPrice: parseFloat(items[0].pointsPrice.replace(".", ""))
         });
       }
       return (responseJSON);
