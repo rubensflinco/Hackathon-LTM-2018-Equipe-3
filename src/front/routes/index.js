@@ -7,7 +7,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-   offers('../offers.xlsx', 5)
+   offers('../offers.xlsx', req.query.limit || 5)
     .then(offers => offers.map(offer => {
       return Promise.all(productMatcher(offer))
         .then(match => ({
