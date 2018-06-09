@@ -48,8 +48,8 @@ const multiplusMatcher = (offer) => {
                 obj.program = 'multiplus'
                 obj.vendor = vendor
                 obj.name = element.name
-                obj.pointPrice = parseFloat(element.price.full.to.replace(".",""))
-                obj.pointPriceFrom = parseFloat(element.price.full.from[0].replace(".",""))
+                obj.pointsPrice = parseFloat(element.price.full.to.replace(".",""))
+                obj.pointsPriceFrom = parseFloat(element.price.full.from[0].replace(".",""))
             })
 
             return obj
