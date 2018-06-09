@@ -13,6 +13,8 @@ const offer = {
   vendor: 'Ponto Frio'
 }
 
-const matches = productMatcher(offer)
+const offers = [ offer ]
+
+const matches = offers.map(productMatcher)
 
 console.log(matches)
