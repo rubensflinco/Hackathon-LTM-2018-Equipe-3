@@ -9,7 +9,7 @@ const vendors = {
 }
 
 const validateVendor = offer =>
-  vendors[offer.vendor] ? Promise.resolve(offer.vendor) : Promise.reject()
+  vendors[offer.vendor] ? Promise.resolve(offer) : Promise.reject()
 
 const search = (offer) => {
   const options = {
@@ -21,9 +21,9 @@ const search = (offer) => {
       f: vendors[offer.vendor]
     }
   }
-
+  
   return axios(options)
-    .then(response => { return response.data; })
+    .then(response => response.data )
     .then(cheerio.load)
 }
 
