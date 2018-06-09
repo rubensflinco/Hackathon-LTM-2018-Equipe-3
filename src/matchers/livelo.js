@@ -20,8 +20,7 @@ const liveloMatcher = offer => {
       const $ = cheerio.load(response.data);
 
       const items = $('div.clpfeatureddesc').map(function (i) {
-
-        const vendor = $(this).find('span.partner-name').text();
+        
         const pointsPrice = $(this).find('span.prodprice').text();
         const pointsPriceFrom = $(this).find('span.strikeprodprice').find('strike').text();
         const name = $(this).find('h5.proddesc').text();
@@ -36,7 +35,7 @@ const liveloMatcher = offer => {
       }else{
         var responseJSON = ({
           program: 'livelo',
-          vendor: items[0].vendor,
+          vendor: offer.vendor,
           name: items[0].name,
           pointsPriceFrom: items[0].pointsPriceFrom,
           pointsPrice: items[0].pointsPrice
