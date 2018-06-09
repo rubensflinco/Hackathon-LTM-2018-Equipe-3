@@ -2,18 +2,16 @@ const axios = require('axios')
 
 const multiplusMatcher = (offer) => {
     const vendors = {
-        extra: "extra",
         pontoFrio: "pontofrio",
-        casasBahia: "casasbahia",
-        fastShop: "fastshop"
+        casasBahia: "casasbahia"
     }
-    
-    if ((offer.vendor == "extra") || (offer.vendor == "fastshop")){
+
+    if (!vendors[offer.vendor]) {
         var responseJSON = ({
             program: 'multiplus',
             vendor: offer.vendor
-          });
-        return(responseJSON);
+        });
+        return (responseJSON);
     }
 
     const options = {
