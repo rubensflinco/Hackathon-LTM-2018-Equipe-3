@@ -1,5 +1,5 @@
 const program = require('commander')
-var productMatcher = require('./productMatcher')
+const productMatcher = require('./productMatcher')
 
 const offer = {
   description: 'Chapinha | Prancha Mondial Chrome Pink P19 220°C Cerâmica e Tourmaline - Rosa',
