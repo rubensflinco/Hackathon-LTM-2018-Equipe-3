@@ -8,6 +8,9 @@ const vendors = {
   fastShop: 'fastshop'
 }
 
+const validateVendor = offer =>
+  vendors[offer.vendor] ? Promise.resolve(offer) : Promise.reject()
+
 const search = (offer) => {
   const options = {
     method: 'get',
@@ -18,9 +21,9 @@ const search = (offer) => {
       f: vendors[offer.vendor]
     }
   }
-
+  
   return axios(options)
-    .then(response => { return response.data; })
+    .then(response => response.data )
     .then(cheerio.load)
 }
 
@@ -39,9 +42,12 @@ const evaluate = results => {
   return Promise.resolve(results[0] || null)
 }
 
-const smilesMatcher = offer => search(offer)
-  .then(parse)
-  .then(evaluate)
-  .then(product => ({ program: 'smiles', vendor: offer.vendor, ...product }))
+const smilesMatcher = offer =>
+  validateVendor(offer)
+    .then(search)
+    .then(parse)
+    .then(evaluate)
+    .then(product => ({ program: 'smiles', vendor: offer.vendor, ...product }))
+    .catch(e => ({ program: 'smiles', vendor: offer.vendor }))
 
 module.exports = smilesMatcher
