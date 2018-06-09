@@ -41,6 +41,4 @@ const multiplusMatcher = (offer) => {
         })
 }
 
-console.log(multiplusMatcher().then(resp => console.log(resp)))
-
 module.exports = multiplusMatcher
