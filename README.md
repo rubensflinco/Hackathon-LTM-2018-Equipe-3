@@ -1,4 +1,4 @@
-# Hackathon_LTM_2018_Equipe_3
+# Hackathon-LTM-2018-Equipe-3
 
 Somos a equipe 3 participamos do hackathon LTM, e ganhamos a competição.
 <br/><br/>
