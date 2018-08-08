@@ -18,4 +18,4 @@ Somos a equipe 3 participamos do hackathon LTM, e ganhamos a competição.
 
 # Equipe 3:
 <br/>
-Emerson Soares, Rubens Flinco, Anderson Santana, Matheus Klemann
+<a href="https://github.com/emersonsoares">Emerson Soares</a>, <a href="https://github.com/JotinhaBR">Rubens Flinco</a>, <a href="https://github.com/JotinhaBR">Anderson Santana</a>, Matheus Klemann
