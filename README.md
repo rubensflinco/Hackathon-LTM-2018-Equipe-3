@@ -8,6 +8,11 @@ Somos a equipe 3 participamos do hackathon LTM, e ganhamos a competição.
 <br>ou<br>
 <a href="http://forum.planetsweb.com.br/threads/120/">http://forum.planetsweb.com.br/threads/120/</a>
 
+# Equipe 3:
+<br/>
+<a href="https://github.com/emersonsoares">Emerson Soares</a>, <a href="https://github.com/JotinhaBR">Rubens Flinco</a>, <a href="https://github.com/JotinhaBR">Anderson Santana</a>, Matheus Klemann
+
+
 <br/>
 <hr>
 <br/>
@@ -15,7 +20,3 @@ Somos a equipe 3 participamos do hackathon LTM, e ganhamos a competição.
 <br/>
 <hr>
 <br/>
-
-# Equipe 3:
-<br/>
-<a href="https://github.com/emersonsoares">Emerson Soares</a>, <a href="https://github.com/JotinhaBR">Rubens Flinco</a>, <a href="https://github.com/JotinhaBR">Anderson Santana</a>, Matheus Klemann
