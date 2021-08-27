@@ -4,9 +4,7 @@ Somos a equipe 3 participamos do hackathon LTM, e ganhamos a competição.
 <br/><br/>
 
 # Leia a Matéria sobre a nossa vitória
-<a href="http://forum.planetsweb.com.br/threads/120/">Ler matéria</a>
-<br>ou<br>
-<a href="http://forum.planetsweb.com.br/threads/120/">http://forum.planetsweb.com.br/threads/120/</a>
+<a href="https://blog.planetsweb.com.br/02/08/2019/anonimo/ltm-premia-programadores-com-r-10-mil-na-primeira-edicao-do-seu-hackathon/">Ler matéria</a>
 
 # Equipe 3:
 <br/>
